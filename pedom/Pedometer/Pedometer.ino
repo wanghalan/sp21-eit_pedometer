@@ -19,9 +19,9 @@ void loop()
   counter++;
   if (sensorValue > minValue) {
     if (counter > run_thresh){
-      Serial.print("Walking! Steps: ");
+      Serial.print("Walking! - Steps: ");
     }else{
-      Serial.print("Running! Steps: ");
+      Serial.print("Running! - Steps: ");
     }
     numSteps++;
 //    Serial.print("Steps: ");
@@ -34,9 +34,9 @@ void loop()
     }
 //    Serial.println(counter);
     if (counter > run_thresh){
-      Serial.print("Walking! Steps: ");
+      Serial.print("Walking! - Steps: ");
     }else{
-      Serial.print("Running! Steps: ");
+      Serial.print("Running! - Steps: ");
     }
     counter = 0;
     numSteps++;
