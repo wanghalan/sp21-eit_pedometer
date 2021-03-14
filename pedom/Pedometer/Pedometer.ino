@@ -1,9 +1,11 @@
 int sensorPin = A0;   // voltage input. Use any ADC pin (starts with A)
 int sensorValue = 0;  // stores value from ADC
-int numSteps = 0;
 
-int counter = 0;
-int run_thresh = 4;
+int numSteps = 0;   // tracks number of steps taken
+int counter = 0;    // tracks how long since the last step was taken
+
+int minValue = 30;     // minimum sensor value for a complete weight shift
+int run_thresh = 4;    // maximum duration to be considered running
 
 void setup()
 {
@@ -14,38 +16,40 @@ void loop()
 {
   int sensorValue = analogRead (sensorPin);   // reads the sensor
   // returns 0-1023
-  
-  int minValue = 30;     // sensor value you consider to be minimum
+
   counter++;
+
+  // weight shift to sensored foot
   if (sensorValue > minValue) {
-    if (counter > run_thresh){
+    if (counter > run_thresh) {
       Serial.print("Walking! - Steps: ");
-    }else{
+    } else {
       Serial.print("Running! - Steps: ");
     }
+ 
     numSteps++;
-//    Serial.print("Steps: ");
     Serial.println(numSteps);
     counter = 0;
-    while(sensorValue > minValue) {
+    
+    while (sensorValue > minValue) {
       sensorValue = analogRead (sensorPin);   // reads the sensor
       counter++;
       delay(100);
     }
-//    Serial.println(counter);
-    if (counter > run_thresh){
+    
+    // weight shift to non-sensored foot
+    if (counter > run_thresh) {
       Serial.print("Walking! - Steps: ");
-    }else{
+    } else {
       Serial.print("Running! - Steps: ");
     }
-    counter = 0;
+    
     numSteps++;
-//    Serial.print("Steps: "); 
     Serial.println(numSteps);
+    counter = 0;
+    
     delay(100);
   }
-
-//  Serial.println(sensorValue);   // Prints the value via the serial port
 
   delay(100);
 }
