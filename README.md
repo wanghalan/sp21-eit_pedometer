@@ -6,7 +6,8 @@ _Project created for the [Engineering Interactive Technologies](https://seongkoo
 
 ### Documentation
 ---
-- [Final Project Report](https://www.overleaf.com/read/vgqfjfzfshpm)
+- [Pedometer Writeup](https://www.overleaf.com/read/vgqfjfzfshpm)
+- [Game Controller Writeup](https://www.overleaf.com/read/ntcwgxdhwvww)
 
 ### Contributors
 ---
